@@ -1,12 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Dashboard from "@/components/Dashboard";
+import CommunityPreview from "@/components/CommunityPreview";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [currentView, setCurrentView] = useState<"home" | "dashboard">("home");
+
+  if (currentView === "dashboard") {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <Dashboard />
       </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <Hero />
+      <CommunityPreview />
+      
+      {/* Demo Dashboard Access */}
+      <section className="py-12 px-6 text-center">
+        <button
+          onClick={() => setCurrentView("dashboard")}
+          className="btn-hero"
+        >
+          View Dashboard Demo
+        </button>
+      </section>
     </div>
   );
 };
