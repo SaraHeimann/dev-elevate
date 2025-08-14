@@ -13,8 +13,11 @@ import {
   Calendar,
   CheckCircle
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen pt-20 pb-12 px-6">
       <div className="container mx-auto max-w-7xl">
@@ -112,7 +115,7 @@ const Dashboard = () => {
                   </CardTitle>
                   <CardDescription>Track your weekly objectives</CardDescription>
                 </div>
-                <Button size="sm" className="bg-gradient-primary text-white">
+                <Button size="sm" className="bg-gradient-primary text-white" onClick={() => navigate("/tasks")}> 
                   <Plus className="h-4 w-4 mr-2" />
                   Add Goal
                 </Button>
